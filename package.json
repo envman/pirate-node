@@ -1,0 +1,19 @@
+{
+  "name": "no-ones-onion-node",
+  "description": "node workshop",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tsangste/onion-node#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsangste/onion-node.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
