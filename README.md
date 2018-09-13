@@ -8,9 +8,7 @@ Follow the steps below:
 ```js
 const onion = require('no-ones-onion-node')
 
-onion.createUser('test', (err, id) => {
-
-})
+// Entered desired username and shipID from ship registration!
+onion.createUser('User Name', 'ShipId')
 ```
 * **NOTE** please keep hold of the userId that gets returned from the callback
-

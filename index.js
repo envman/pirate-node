@@ -14,7 +14,9 @@ function createUser(userName, shipId, callback) {
     }
   })
 
-  return res.getBody('utf8')
+  const msg = res.getBody('utf8')
+  console.log(msg)
+  return msg
 }
 
 function bonusPoints(userId, callback) {
@@ -24,7 +26,9 @@ function bonusPoints(userId, callback) {
     }
   })
 
-  return res.getBody('utf8')
+  const msg = res.getBody('utf8')
+  console.log(msg)
+  return msg
 }
 
 module.exports = {
