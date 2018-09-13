@@ -1,32 +1,30 @@
-const request = require('request')
+const request = require('sync-request')
 
-function createUser(userName, callback) {
+const server = 'http://192.168.0.14:1337'
+
+function createUser(userName, shipId, callback) {
   if (typeof userName !== 'string' && !(userName instanceof String)) {
-    return callback(new Error('username should be a string'))
+    throw new Error('username should be a string')
   }
 
-  request(`http://192.168.0.14:1337/user/${userName}`, (err, response, body) => {
-    if (err) return callback(err)
-
-    if (response.statusCode != 200) return callback(new Error('failed request'))
-
-    callback(null, body)
+  var res = request('POST', `${server}/shipmates`, {
+    json: {
+      name: userName,
+      shipId
+    }
   })
+
+  return res.getBody('utf8')
 }
 
 function bonusPoints(userId, callback) {
-  request({
-    url: `http://192.168.0.14:1337/packagescore`,
-    method: "POST",
-    json: true,
-    body: { user: userId }
-  }, (err, response, _) => {
-    if (err) callback(err)
-
-    if (response.statusCode != 200) return callback(new Error('failed request'))
-
-    callback(null, 'bonus achieved!!!')
+  var res = request('POST', `${server}/packagescore`, {
+    json: {
+      user: userId
+    }
   })
+
+  return res.getBody('utf8')
 }
 
 module.exports = {

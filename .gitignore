@@ -68,3 +68,5 @@ uploads/*
 
 /data
 /.idea
+
+test.js
