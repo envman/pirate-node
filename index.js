@@ -5,7 +5,7 @@ function createUser(userName, callback) {
     return callback(new Error('username should be a string'))
   }
 
-  request(`http://192.168.0.14:8080/user/${userName}`, (err, response, body) => {
+  request(`http://192.168.0.14:1337/user/${userName}`, (err, response, body) => {
     if (err) return callback(err)
 
     if (response.statusCode != 200) return callback(new Error('failed request'))
@@ -16,7 +16,7 @@ function createUser(userName, callback) {
 
 function bonusPoints(userId, callback) {
   request({
-    url: `http://192.168.0.14:8080/packagescore`,
+    url: `http://192.168.0.14:1337/packagescore`,
     method: "POST",
     json: true,
     body: { user: userId }

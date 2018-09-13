@@ -1,7 +1,7 @@
 {
   "name": "no-ones-onion-node",
   "description": "node workshop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/tsangste/onion-node#readme",
   "repository": {
     "type": "git",
