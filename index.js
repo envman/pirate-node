@@ -36,7 +36,8 @@ function bonusPoints(userId) {
 
 function callback(callback) {
   request({
-    method: `${server}/callback_1`,
+    method: 'POST',
+    url: `${server}/callback_1`,
   }, (err, response, body) => {
     callback(err, body)
   })
