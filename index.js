@@ -72,5 +72,7 @@ module.exports = {
   createUser: createUser,
   bonusPoints: bonusPoints,
   callback,
-
+  encrypt,
+  decrypt,
+  checkg
 }
