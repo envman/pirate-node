@@ -101,5 +101,7 @@ module.exports = {
   callback,
   encrypt,
   decrypt,
-  check
+  check,
+  openChest,
+  isGold
 }
