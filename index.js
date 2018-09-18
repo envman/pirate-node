@@ -1,6 +1,7 @@
 const srequest = require('sync-request')
 const request = require('request')
 const Cryptr = require('cryptr')
+const shortid = require('shortid')
 
 const server = 'http://192.168.0.14:1337'
 
@@ -35,7 +36,7 @@ function bonusPoints(userId) {
 
 function callback(userId, callback) {
   request({
-    method: 'http://192.168.0.14:1337/callback_1'
+    method: `${server}/callback_1`,
   }, (err, response, body) => {
     callback(err, body)
   })
@@ -65,6 +66,31 @@ function check(secret, callback) {
     body : { secret }
   }, (err, response, body) => {
     callback(err, body)
+  })
+}
+
+let gold
+
+function openChest() {
+  return new Promise((resolve, reject) => {
+    gold = shortid()
+
+    resolve(gold)
+  })
+}
+
+function isGold(treasure) {
+  return new Promise((resolve, reject) => {
+    if (treasure == gold) {
+      request({
+        method: 'POST',
+        url: `${server}/treasure_gold`
+      }, (err, response, body) => {
+        if (err) return reject(err)
+
+        resolve(body)
+      })
+    }
   })
 }
 
