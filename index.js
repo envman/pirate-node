@@ -74,5 +74,5 @@ module.exports = {
   callback,
   encrypt,
   decrypt,
-  checkg
+  check
 }
