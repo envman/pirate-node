@@ -70,3 +70,4 @@ uploads/*
 /.idea
 
 test.js
+generate.js

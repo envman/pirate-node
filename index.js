@@ -1,13 +1,15 @@
-const request = require('sync-request')
+const srequest = require('sync-request')
+const request = require('request')
+const Cryptr = require('cryptr')
 
 const server = 'http://192.168.0.14:1337'
 
-function createUser(userName, shipId, callback) {
+function createUser(userName, shipId) {
   if (typeof userName !== 'string' && !(userName instanceof String)) {
     throw new Error('username should be a string')
   }
 
-  var res = request('POST', `${server}/shipmates`, {
+  var res = srequest('POST', `${server}/shipmates`, {
     json: {
       name: userName,
       shipId
@@ -19,8 +21,8 @@ function createUser(userName, shipId, callback) {
   return msg
 }
 
-function bonusPoints(userId, callback) {
-  var res = request('POST', `${server}/packagescore`, {
+function bonusPoints(userId) {
+  var res = srequest('POST', `${server}/packagescore`, {
     json: {
       user: userId
     }
@@ -31,7 +33,44 @@ function bonusPoints(userId, callback) {
   return msg
 }
 
+function callback(userId, callback) {
+  request({
+    method: 'http://192.168.0.14:1337/callback_1'
+  }, (err, response, body) => {
+    callback(err, body)
+  })
+}
+
+function encrypt(data, key, callback) {
+  const cryptr = new Cryptr(key)
+
+  setTimeout(() => {
+    callback(null, cryptr.encrypt(data))
+  }, 100)
+}
+
+function decrypt(data, key, callback) {
+  const cryptr = new Cryptr(key)
+
+  setTimeout(() => {
+    callback(null, cryptr.decrypt(data))
+  }, 100)
+}
+
+function check(secret, callback) {
+  request({
+    method: 'POST',
+    url: `${server}/check_secret`,
+    json: true,
+    body : { secret }
+  }, (err, response, body) => {
+    callback(err, body)
+  })
+}
+
 module.exports = {
   createUser: createUser,
-  bonusPoints: bonusPoints
+  bonusPoints: bonusPoints,
+  callback,
+
 }
