@@ -146,6 +146,25 @@ function checkAll(answer) {
     })
 }
 
+function checkMongo(treasure) {
+  request({
+      method: 'POST',
+      url: `${server}/mongo_treasure`,
+      json: true,
+      body: {
+        treasure
+      }
+    }, (err, response, body) => {
+      if (err) return console.error(err)
+
+      if (response.statusCode !== 200) {
+        return console.error(`Bad status code ${response.statusCode} ${body || ''}`)
+      }
+
+      console.log(body)
+    })
+}
+
 module.exports = {
   createUser: createUser,
   bonusPoints: bonusPoints,
@@ -157,5 +176,6 @@ module.exports = {
   isGold,
   sendMessage,
   checkPromise,
-  checkAll
+  checkAll,
+  checkMongo
 }
