@@ -1,15 +1,15 @@
-# no-ones-onion workshop
+# Learn Node Like a Pirate Workshop!
 
 ## Introduction
 
 Follow the steps below:
-* Install package: `npm i no-ones-onion-node`
+* Install package: `npm i pirate-node`
 * Consume the package as follows:
 ```js
-const onion = require('no-ones-onion-node')
+const pirate = require('pirate-node')
 
 // Entered desired username and shipID from ship registration!
-onion.createUser('User Name', 'ShipId')
+pirate.createUser('User Name', 'ShipId')
 ```
 
 Then run the file! http://lmgtfy.com/?q=run+node+file
