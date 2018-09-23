@@ -50,6 +50,8 @@ function encrypt(data, key, callback) {
 function decrypt(data, key, callback) {
   const cryptr = new Cryptr(key)
 
+  var res = srequest('POST', `${server}/decrypt_score`, {})
+
   setTimeout(() => {
     callback(null, cryptr.decrypt(data))
   }, 100)
