@@ -93,6 +93,39 @@ function isGold(treasure) {
   })
 }
 
+function sendMessage(message, callback) {
+  setTimeout(_ => {
+    if (message == 'break') {
+      callback(new Error('Invalid Message'))
+    } else {
+      callback(null, 'message sent!')
+    }
+  }, 100)
+}
+
+function checkPromise(fact) {
+  let good
+
+  return fact('test')
+    .then(d => {
+      if (d == 'message sent!') {
+        good = true
+      } else {
+        throw new Error('Invalid data passed out')
+      }
+    })
+    .then(_ => fact('break'))
+    .catch(err => {
+      if (err.message == 'Invalid Message') {
+        if (good) {
+          var res = srequest('POST', `${server}/making_promises`, {})
+        }
+      } else {
+        throw new Error('Invalid error handling')
+      }
+    })
+}
+
 module.exports = {
   createUser: createUser,
   bonusPoints: bonusPoints,
@@ -101,5 +134,7 @@ module.exports = {
   decrypt,
   check,
   openChest,
-  isGold
+  isGold,
+  sendMessage,
+  checkPromise
 }
