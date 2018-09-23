@@ -119,10 +119,30 @@ function checkPromise(fact) {
       if (err.message == 'Invalid Message') {
         if (good) {
           var res = srequest('POST', `${server}/making_promises`, {})
+          return res.getBody('utf8')
         }
       } else {
         throw new Error('Invalid error handling')
       }
+    })
+}
+
+function checkAll(answer) {
+  request({
+      method: 'POST',
+      url: `${server}/map_check`,
+      json: true,
+      body: {
+        answer
+      }
+    }, (err, response, body) => {
+      if (err) return console.error(err)
+
+      if (response.statusCode !== 200) {
+        return console.error(`Bad status code ${response.statusCode} ${body || ''}`)
+      }
+
+      console.log(body)
     })
 }
 
@@ -136,5 +156,6 @@ module.exports = {
   openChest,
   isGold,
   sendMessage,
-  checkPromise
+  checkPromise,
+  checkAll
 }
