@@ -1,11 +1,11 @@
 {
-  "name": "no-ones-onion-node",
+  "name": "pirate-node",
   "description": "node workshop",
-  "version": "0.5.0",
-  "homepage": "https://github.com/tsangste/onion-node#readme",
+  "version": "0.1.0",
+  "homepage": "https://github.com/envman/pirate-node#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tsangste/onion-node.git"
+    "url": "https://github.com/envman/pirate-node.git"
   },
   "main": "index.js",
   "scripts": {
