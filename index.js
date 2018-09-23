@@ -22,12 +22,8 @@ function createUser(userName, shipId) {
   return msg
 }
 
-function bonusPoints(userId) {
-  var res = srequest('POST', `${server}/packagescore`, {
-    json: {
-      user: userId
-    }
-  })
+function bonusPoints() {
+  var res = srequest('POST', `${server}/packagescore`, {})
 
   const msg = res.getBody('utf8')
   console.log(msg)
