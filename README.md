@@ -31,3 +31,10 @@ pirate.decrypt(data, 'key', (err, decrypted) => {
   
 })
 ```
+
+## sendMessage
+```js
+pirate.sendMessage(message, (err, response) => {
+  // read response
+})
+```
