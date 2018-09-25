@@ -19,6 +19,9 @@ Then run the file! http://lmgtfy.com/?q=run+node+file
 # Callback Cove
 
 ## encryption
+
+Data should be a utf8 string.
+
 ```js
 pirate.encrypt(data, 'key', (err, encrypted) => {
 
@@ -28,7 +31,7 @@ pirate.encrypt(data, 'key', (err, encrypted) => {
 ## decryption
 ```js
 pirate.decrypt(data, 'key', (err, decrypted) => {
-  
+
 })
 ```
 
