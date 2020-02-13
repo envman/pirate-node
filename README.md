@@ -7,9 +7,6 @@ Follow the steps below:
 * Consume the package as follows:
 ```js
 const pirate = require('pirate-node')
-
-// Entered desired username and shipID from ship registration!
-pirate.createUser('User Name', 'ShipId')
 ```
 
 Then run the file! http://lmgtfy.com/?q=run+node+file
@@ -23,8 +20,11 @@ Then run the file! http://lmgtfy.com/?q=run+node+file
 Data should be a utf8 string.
 
 ```js
-pirate.encrypt(data, 'key', (err, encrypted) => {
+pirate.ahoy()
+```
 
+```js
+pirate.encrypt(data, 'key', (err, encrypted) => {
 })
 ```
 
